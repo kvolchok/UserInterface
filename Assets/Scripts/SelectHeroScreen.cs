@@ -19,7 +19,7 @@ public class SelectHeroScreen : MonoBehaviour
     private int _currentHeroIndex;
     private HeroSettings[] _heroes;
     private Wallet _wallet;
-    private Action<int>_onHeroSelected;
+    private Action<int> _onHeroSelected;
     
     public void ShowScreen(int currentHeroIndex, HeroSettings[] heroes, Wallet wallet, Action<int> onHeroSelected)
     {
