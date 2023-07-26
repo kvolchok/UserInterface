@@ -15,25 +15,27 @@ public class SelectHeroScreen : MonoBehaviour
     [SerializeField]
     private Button _buyButton;
 
+    private PrefsManager _prefsManager;
+    private CurrencyManager _currencyManager;
     private HeroLoader _heroLoader;
     private HeroSettings[] _heroes;
     private int _currentHeroIndex;
     private HeroSettings _currentHero => _heroes[_currentHeroIndex];
-    private CurrencyManager _currencyManager;
 
-    public void Initialize(HeroLoader heroLoader)
+    public void Initialize(PrefsManager prefsManager, CurrencyManager currencyManager, HeroLoader heroLoader,
+        HeroSettings[] heroes, int currentHeroIndex, Action<int> onHeroSelected)
     {
+        _prefsManager = prefsManager;
+        _currencyManager = currencyManager;
         _heroLoader = heroLoader;
+        _heroes = heroes;
+        _currentHeroIndex = currentHeroIndex;
+        _onHeroSelected = onHeroSelected;
     }
     
-    public void ShowScreen(HeroSettings[] heroes, int currentHeroIndex, CurrencyManager currencyManager,
-        Action<int> onHeroSelected)
+    public void ShowScreen()
     {
-        _heroes = heroes;
-        _currencyManager = currencyManager;
-        _onHeroSelected = onHeroSelected;
-        
-        ShowHero(currentHeroIndex);
+        ShowHero(_currentHeroIndex);
     }
 
     [UsedImplicitly]
@@ -44,12 +46,15 @@ public class SelectHeroScreen : MonoBehaviour
             _currentHero.MarkAsAvailable();
             UpdateButtonsState(isSelected: true);
         }
+        
+        _prefsManager.SaveBoughtHero(_currentHeroIndex);
     }
 
     [UsedImplicitly]
     public void SelectHero()
     {
         _onHeroSelected?.Invoke(_currentHeroIndex);
+        _prefsManager.SaveSelectedHeroIndex(_currentHeroIndex);
     }
     
     [UsedImplicitly]
