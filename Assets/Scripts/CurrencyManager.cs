@@ -13,8 +13,22 @@ public class CurrencyManager : MonoBehaviour
     [SerializeField]
     private int _gems;
 
-    private void Awake()
+    private PrefsManager _prefsManager;
+
+    public void Initialize(PrefsManager prefsManager)
     {
+        _prefsManager = prefsManager;
+
+        if (_prefsManager.HasKeyMoney())
+        {
+            _money = _prefsManager.GetMoney();        
+        }
+        
+        if (_prefsManager.HasKeyGems())
+        {
+            _gems = _prefsManager.GetGems();        
+        }
+        
         SetMoney(_money);
         SetGems(_gems);
     }
@@ -35,11 +49,13 @@ public class CurrencyManager : MonoBehaviour
     {
         _money = value;
         _moneyValueChanged?.Invoke(_money);
+        _prefsManager.SaveMoney(_money);
     }
     
     private void SetGems(int value)
     {
         _gems = value;
         _gemsValueChanged?.Invoke(_gems);
+        _prefsManager.SaveGems(_gems);
     }
 }

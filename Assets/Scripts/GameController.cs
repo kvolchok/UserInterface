@@ -15,12 +15,19 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private HeroLoader _heroLoader;
 
+    private PrefsManager _prefsManager;
     private int _currentHeroIndex;
 
     private void Awake()
     {
+        _prefsManager = new PrefsManager(_gameSettings.Heroes.Length);
+        _prefsManager.UpdateBoughtHeroes(_gameSettings.Heroes);
+        _currentHeroIndex = _prefsManager.GetSelectedHeroIndex();
+
+        _currencyManager.Initialize(_prefsManager);
         _lobbyScreen.Initialize(_heroLoader);
-        _selectHeroScreen.Initialize(_heroLoader);
+        _selectHeroScreen.Initialize(_prefsManager, _currencyManager, _heroLoader,
+            _gameSettings.Heroes, _currentHeroIndex, OnHeroSelected);
         
         ShowLobbyScreen();
     }
@@ -34,7 +41,7 @@ public class GameController : MonoBehaviour
     [UsedImplicitly]
     public void ShowSelectHeroScreen()
     {
-        _selectHeroScreen.ShowScreen(_gameSettings.Heroes, _currentHeroIndex, _currencyManager, OnHeroSelected);
+        _selectHeroScreen.ShowScreen();
     }
 
     private void OnHeroSelected(int heroIndex)
