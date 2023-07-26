@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class LobbyController : MonoBehaviour
+public class GameController : MonoBehaviour
 {
     [SerializeField]
     private GameSettings _gameSettings;
