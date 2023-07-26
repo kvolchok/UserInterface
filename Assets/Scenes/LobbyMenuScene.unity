@@ -2542,7 +2542,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _heroStatsView: {fileID: 611153896}
-  _heroLoader: {fileID: 492640285}
   _selectButton: {fileID: 2096196695}
   _buyButton: {fileID: 1752043423}
 --- !u!114 &611153896
@@ -3723,7 +3722,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _heroStatsView: {fileID: 993924296}
-  _heroLoader: {fileID: 492640285}
 --- !u!114 &993924296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4597,7 +4595,7 @@ MonoBehaviour:
   _gameSettings: {fileID: 1264100053}
   _lobbyScreen: {fileID: 993924295}
   _selectHeroScreen: {fileID: 611153895}
-  _wallet: {fileID: 2135378398}
+  _currencyManager: {fileID: 0}
   _heroLoader: {fileID: 492640285}
 --- !u!1 &1293107292
 GameObject:
@@ -8490,7 +8488,7 @@ GameObject:
   - component: {fileID: 2135378399}
   - component: {fileID: 2135378398}
   m_Layer: 0
-  m_Name: Wallet
+  m_Name: CurrencyManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

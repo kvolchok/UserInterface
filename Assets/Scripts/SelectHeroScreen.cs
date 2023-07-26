@@ -19,17 +19,18 @@ public class SelectHeroScreen : MonoBehaviour
     private HeroSettings[] _heroes;
     private int _currentHeroIndex;
     private HeroSettings _currentHero => _heroes[_currentHeroIndex];
-    private Wallet _wallet;
+    private CurrencyManager _currencyManager;
 
     public void Initialize(HeroLoader heroLoader)
     {
         _heroLoader = heroLoader;
     }
     
-    public void ShowScreen(HeroSettings[] heroes, int currentHeroIndex, Wallet wallet, Action<int> onHeroSelected)
+    public void ShowScreen(HeroSettings[] heroes, int currentHeroIndex, CurrencyManager currencyManager,
+        Action<int> onHeroSelected)
     {
         _heroes = heroes;
-        _wallet = wallet;
+        _currencyManager = currencyManager;
         _onHeroSelected = onHeroSelected;
         
         ShowHero(currentHeroIndex);
@@ -38,7 +39,7 @@ public class SelectHeroScreen : MonoBehaviour
     [UsedImplicitly]
     public void BuyHero()
     {
-        if (_wallet.BuyHero(_currentHero.Price))
+        if (_currencyManager.BuyHero(_currentHero.Price))
         {
             _currentHero.MarkAsAvailable();
             UpdateButtonsState(isSelected: true);

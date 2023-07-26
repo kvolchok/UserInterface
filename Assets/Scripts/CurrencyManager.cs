@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class Wallet : MonoBehaviour
+public class CurrencyManager : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _lobbyScreenMoney;
@@ -9,7 +9,7 @@ public class Wallet : MonoBehaviour
     private TextMeshProUGUI _selectHeroScreenMoney;
     
     [SerializeField]
-    private int _currentMoney = 70000;
+    private int _money;
 
     private void Awake()
     {
@@ -18,19 +18,19 @@ public class Wallet : MonoBehaviour
 
     public bool BuyHero(int price)
     {
-        if (_currentMoney < price)
+        if (_money < price)
         {
             return false;
         }
 
-        _currentMoney -= price;
+        _money -= price;
         SetCurrentMoney();
         return true;
     }
 
     private void SetCurrentMoney()
     {
-        _lobbyScreenMoney.text = _currentMoney.ToString();
-        _selectHeroScreenMoney.text = _currentMoney.ToString();
+        _lobbyScreenMoney.text = _money.ToString();
+        _selectHeroScreenMoney.text = _money.ToString();
     }
 }

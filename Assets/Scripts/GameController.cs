@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private SelectHeroScreen _selectHeroScreen;
     [SerializeField]
-    private Wallet _wallet;
+    private CurrencyManager _currencyManager;
     
     [SerializeField]
     private HeroLoader _heroLoader;
@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
     [UsedImplicitly]
     public void ShowSelectHeroScreen()
     {
-        _selectHeroScreen.ShowScreen(_gameSettings.Heroes, _currentHeroIndex, _wallet, OnHeroSelected);
+        _selectHeroScreen.ShowScreen(_gameSettings.Heroes, _currentHeroIndex, _currencyManager, OnHeroSelected);
     }
 
     private void OnHeroSelected(int heroIndex)
