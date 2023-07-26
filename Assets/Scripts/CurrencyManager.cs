@@ -1,19 +1,22 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CurrencyManager : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI _lobbyScreenMoney;
+    private UnityEvent<int> _moneyValueChanged;
     [SerializeField]
-    private TextMeshProUGUI _selectHeroScreenMoney;
-    
+    private UnityEvent<int> _gemsValueChanged;
+
     [SerializeField]
     private int _money;
+    [SerializeField]
+    private int _gems;
 
     private void Awake()
     {
-        SetCurrentMoney();
+        SetMoney(_money);
+        SetGems(_gems);
     }
 
     public bool BuyHero(int price)
@@ -24,13 +27,19 @@ public class CurrencyManager : MonoBehaviour
         }
 
         _money -= price;
-        SetCurrentMoney();
+        SetMoney(_money);
         return true;
     }
 
-    private void SetCurrentMoney()
+    private void SetMoney(int value)
     {
-        _lobbyScreenMoney.text = _money.ToString();
-        _selectHeroScreenMoney.text = _money.ToString();
+        _money = value;
+        _moneyValueChanged?.Invoke(_money);
+    }
+    
+    private void SetGems(int value)
+    {
+        _gems = value;
+        _gemsValueChanged?.Invoke(_gems);
     }
 }

@@ -4517,17 +4517,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2033989565555115545, guid: 0dc4bb08ae87b412f82f5eb71b6fa881, type: 3}
   m_PrefabInstance: {fileID: 1234662242}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1249898305 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5317940675544280175, guid: 1485835304b9144b2b4871ab0aacae9e, type: 3}
-  m_PrefabInstance: {fileID: 1840635714}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1264100052
 GameObject:
   m_ObjectHideFlags: 0
@@ -4595,7 +4584,7 @@ MonoBehaviour:
   _gameSettings: {fileID: 1264100053}
   _lobbyScreen: {fileID: 993924295}
   _selectHeroScreen: {fileID: 611153895}
-  _currencyManager: {fileID: 0}
+  _currencyManager: {fileID: 2135378398}
   _heroLoader: {fileID: 492640285}
 --- !u!1 &1293107292
 GameObject:
@@ -5414,7 +5403,7 @@ MonoBehaviour:
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
+  m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
@@ -5952,7 +5941,7 @@ MonoBehaviour:
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
+  m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
@@ -7431,6 +7420,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 1485835304b9144b2b4871ab0aacae9e, type: 3}
+--- !u!114 &1840635715 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7124073914055154431, guid: 1485835304b9144b2b4871ab0aacae9e, type: 3}
+  m_PrefabInstance: {fileID: 1840635714}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cd81fafcec48cea65c7be25962d1ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1845047313
 GameObject:
   m_ObjectHideFlags: 0
@@ -8506,9 +8506,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5283fe1983d34d728dde757866e66216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lobbyScreenMoney: {fileID: 3664593382736382589}
-  _selectHeroScreenMoney: {fileID: 1249898305}
-  _currentMoney: 70000
+  _moneyValueChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8869380533521819155}
+        m_TargetAssemblyTypeName: CurrencyView, Assembly-CSharp
+        m_MethodName: UpdateMoneyView
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1840635715}
+        m_TargetAssemblyTypeName: CurrencyView, Assembly-CSharp
+        m_MethodName: UpdateMoneyView
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _gemsValueChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8869380533521819155}
+        m_TargetAssemblyTypeName: CurrencyView, Assembly-CSharp
+        m_MethodName: UpdateGemsView
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1840635715}
+        m_TargetAssemblyTypeName: CurrencyView, Assembly-CSharp
+        m_MethodName: UpdateGemsView
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _money: 70000
+  _gems: 1000
 --- !u!4 &2135378399
 Transform:
   m_ObjectHideFlags: 0
@@ -8850,17 +8903,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: d17bba2dcbada46e4bd7361340d55485, type: 3}
---- !u!114 &3664593382736382589 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5317940675544280175, guid: 1485835304b9144b2b4871ab0aacae9e, type: 3}
-  m_PrefabInstance: {fileID: 8869380533521819154}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5587895184817998271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9107,3 +9149,14 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 1485835304b9144b2b4871ab0aacae9e, type: 3}
+--- !u!114 &8869380533521819155 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7124073914055154431, guid: 1485835304b9144b2b4871ab0aacae9e, type: 3}
+  m_PrefabInstance: {fileID: 8869380533521819154}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cd81fafcec48cea65c7be25962d1ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
