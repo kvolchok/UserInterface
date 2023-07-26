@@ -4561,72 +4561,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Heroes>k__BackingField:
-  - <Name>k__BackingField: No Weapon
-    <Icon>k__BackingField: {fileID: 21300000, guid: 169d45648e00348038299fc345aa6b4f, type: 3}
-    <Level>k__BackingField: 1
-    <CurrentLevelPoints>k__BackingField: 10
-    <Health>k__BackingField: 7
-    <Attack>k__BackingField: 3
-    <Defense>k__BackingField: 3
-    <Speed>k__BackingField: 9
-    <Price>k__BackingField: 5000
-    <Prefab>k__BackingField: {fileID: 4631963978777973039, guid: 9751d0696c1ee4d8a957f177f49f1806, type: 3}
-    <IsAvailable>k__BackingField: 1
-  - <Name>k__BackingField: Bow
-    <Icon>k__BackingField: {fileID: 21300000, guid: cba6fba15682e49cdab63583abb7be7c, type: 3}
-    <Level>k__BackingField: 2
-    <CurrentLevelPoints>k__BackingField: 20
-    <Health>k__BackingField: 5
-    <Attack>k__BackingField: 5
-    <Defense>k__BackingField: 2
-    <Speed>k__BackingField: 7
-    <Price>k__BackingField: 7000
-    <Prefab>k__BackingField: {fileID: 1911315358635904, guid: 0462945a75b007c459ba1a3bcf18cacc, type: 3}
-    <IsAvailable>k__BackingField: 0
-  - <Name>k__BackingField: Double Sword
-    <Icon>k__BackingField: {fileID: 21300000, guid: 455d317bd36c5444483f77940660f34b, type: 3}
-    <Level>k__BackingField: 3
-    <CurrentLevelPoints>k__BackingField: 30
-    <Health>k__BackingField: 7
-    <Attack>k__BackingField: 7
-    <Defense>k__BackingField: 3
-    <Speed>k__BackingField: 5
-    <Price>k__BackingField: 10000
-    <Prefab>k__BackingField: {fileID: 1938047842842718, guid: e43a414ef8c04124b94fc653e5fd713b, type: 3}
-    <IsAvailable>k__BackingField: 0
-  - <Name>k__BackingField: Magic Wand
-    <Icon>k__BackingField: {fileID: 21300000, guid: cba6fba15682e49cdab63583abb7be7c, type: 3}
-    <Level>k__BackingField: 4
-    <CurrentLevelPoints>k__BackingField: 40
-    <Health>k__BackingField: 8
-    <Attack>k__BackingField: 7
-    <Defense>k__BackingField: 5
-    <Speed>k__BackingField: 7
-    <Price>k__BackingField: 15000
-    <Prefab>k__BackingField: {fileID: 1968433030019078, guid: a9cc8fa955a1bb145ac83117c772c5f7, type: 3}
-    <IsAvailable>k__BackingField: 0
-  - <Name>k__BackingField: Sword Shield
-    <Icon>k__BackingField: {fileID: 21300000, guid: 169d45648e00348038299fc345aa6b4f, type: 3}
-    <Level>k__BackingField: 5
-    <CurrentLevelPoints>k__BackingField: 50
-    <Health>k__BackingField: 9
-    <Attack>k__BackingField: 7
-    <Defense>k__BackingField: 8
-    <Speed>k__BackingField: 3
-    <Price>k__BackingField: 20000
-    <Prefab>k__BackingField: {fileID: 1126199400621232, guid: e886514e9250e7a418a0dd0bfb9673b1, type: 3}
-    <IsAvailable>k__BackingField: 0
-  - <Name>k__BackingField: Two Hands Sword
-    <Icon>k__BackingField: {fileID: 21300000, guid: 455d317bd36c5444483f77940660f34b, type: 3}
-    <Level>k__BackingField: 6
-    <CurrentLevelPoints>k__BackingField: 60
-    <Health>k__BackingField: 7
-    <Attack>k__BackingField: 9
-    <Defense>k__BackingField: 5
-    <Speed>k__BackingField: 3
-    <Price>k__BackingField: 25000
-    <Prefab>k__BackingField: {fileID: 1789570279280792, guid: 056f556e83717d945b2b7303930ae56c, type: 3}
-    <IsAvailable>k__BackingField: 0
+  - {fileID: 11400000, guid: 2218b4c858db34d34936e1169ec79561, type: 2}
+  - {fileID: 11400000, guid: 246278b289e914ab2ae1411e434523d7, type: 2}
+  - {fileID: 11400000, guid: 50e5581b10f834234ae798435050ea9e, type: 2}
+  - {fileID: 11400000, guid: 01e2b7dc28f8e470aae83db3a5ec8f48, type: 2}
+  - {fileID: 11400000, guid: b003808819ab64e66afaab980576a0f0, type: 2}
+  - {fileID: 11400000, guid: 533da5f884e344e489c6bad30dafef53, type: 2}
 --- !u!4 &1264100054
 Transform:
   m_ObjectHideFlags: 0
@@ -5451,7 +5391,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -10}
-  m_SizeDelta: {x: 400, y: 100}
+  m_SizeDelta: {x: 450, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1556493955
 MonoBehaviour:
@@ -5989,7 +5929,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 20, y: 0}
-  m_SizeDelta: {x: 470, y: 70}
+  m_SizeDelta: {x: 500, y: 70}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1653797540
 MonoBehaviour:

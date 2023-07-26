@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 
-[Serializable]
-public class HeroSettings
+[CreateAssetMenu(fileName = "HeroSettings", menuName = "ScriptableObject/HeroSettings", order = 50)]
+public class HeroSettings : ScriptableObject
 {
     [field:SerializeField]
     public string Name { get; private set; }
