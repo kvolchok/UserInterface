@@ -4,10 +4,15 @@ public class LobbyScreen : MonoBehaviour
 {
     [SerializeField]
     private HeroStatsView _heroStatsView;
-    [SerializeField]
+    
     private HeroLoader _heroLoader;
 
-    public void ShowScreen(int heroIndex, HeroSettings[] heroes)
+    public void Initialize(HeroLoader heroLoader)
+    {
+        _heroLoader = heroLoader;
+    }
+    
+    public void ShowScreen(HeroSettings[] heroes, int heroIndex)
     {
         var currentHero = heroes[heroIndex];
         _heroStatsView.ShowHeroStats(currentHero);

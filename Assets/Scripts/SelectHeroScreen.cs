@@ -5,23 +5,28 @@ using UnityEngine.UI;
 
 public class SelectHeroScreen : MonoBehaviour
 {
+    private Action<int> _onHeroSelected;
+    
     [SerializeField]
     private HeroStatsView _heroStatsView;
-    [SerializeField]
-    private HeroLoader _heroLoader;
 
     [SerializeField]
     private Button _selectButton;
     [SerializeField]
     private Button _buyButton;
 
-    private HeroSettings _currentHero => _heroes[_currentHeroIndex];
-    private int _currentHeroIndex;
+    private HeroLoader _heroLoader;
     private HeroSettings[] _heroes;
+    private int _currentHeroIndex;
+    private HeroSettings _currentHero => _heroes[_currentHeroIndex];
     private Wallet _wallet;
-    private Action<int> _onHeroSelected;
+
+    public void Initialize(HeroLoader heroLoader)
+    {
+        _heroLoader = heroLoader;
+    }
     
-    public void ShowScreen(int currentHeroIndex, HeroSettings[] heroes, Wallet wallet, Action<int> onHeroSelected)
+    public void ShowScreen(HeroSettings[] heroes, int currentHeroIndex, Wallet wallet, Action<int> onHeroSelected)
     {
         _heroes = heroes;
         _wallet = wallet;
