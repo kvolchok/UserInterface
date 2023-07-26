@@ -71,6 +71,6 @@ public class SelectHeroScreen : MonoBehaviour
     private void UpdateButtonsState(bool isSelected)
     {
         _selectButton.interactable = isSelected;
-        _buyButton.interactable = !isSelected;
+        _buyButton.gameObject.SetActive(!isSelected);
     }
 }
