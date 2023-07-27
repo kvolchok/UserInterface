@@ -7,6 +7,8 @@ public class SelectHeroScreen : MonoBehaviour
 {
     private Action<int> _onHeroSelected;
     
+    private HeroSettings _currentHero => _heroes[_currentHeroIndex];
+    
     [SerializeField]
     private HeroStatsView _heroStatsView;
 
@@ -20,7 +22,6 @@ public class SelectHeroScreen : MonoBehaviour
     private HeroLoader _heroLoader;
     private HeroSettings[] _heroes;
     private int _currentHeroIndex;
-    private HeroSettings _currentHero => _heroes[_currentHeroIndex];
 
     public void Initialize(PrefsManager prefsManager, CurrencyManager currencyManager, HeroLoader heroLoader,
         HeroSettings[] heroes, int currentHeroIndex, Action<int> onHeroSelected)
@@ -45,9 +46,8 @@ public class SelectHeroScreen : MonoBehaviour
         {
             _currentHero.MarkAsAvailable();
             UpdateButtonsState(isSelected: true);
+            _prefsManager.SaveBoughtHero(_currentHeroIndex);
         }
-        
-        _prefsManager.SaveBoughtHero(_currentHeroIndex);
     }
 
     [UsedImplicitly]
