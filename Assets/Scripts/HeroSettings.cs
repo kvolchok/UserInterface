@@ -26,8 +26,8 @@ public class HeroSettings : ScriptableObject
     [field:SerializeField]
     public bool IsAvailable { get; private set; }
 
-    public void MarkAsAvailable()
+    public void ChangeAvailability(bool isAvailable)
     {
-        IsAvailable = true;
+        IsAvailable = isAvailable;
     }
 }

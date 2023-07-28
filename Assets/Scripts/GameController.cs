@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        _prefsManager = new PrefsManager(_gameSettings.Heroes.Length);
+        _prefsManager = new PrefsManager();
         _prefsManager.UpdateBoughtHeroes(_gameSettings.Heroes);
         _currentHeroIndex = _prefsManager.GetSelectedHeroIndex();
 

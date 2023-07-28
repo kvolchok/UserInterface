@@ -44,7 +44,7 @@ public class SelectHeroScreen : MonoBehaviour
     {
         if (_currencyManager.BuyHero(_currentHero.Price))
         {
-            _currentHero.MarkAsAvailable();
+            _currentHero.ChangeAvailability(true);
             UpdateButtonsState(isSelected: true);
             _prefsManager.SaveBoughtHero(_currentHeroIndex);
         }
