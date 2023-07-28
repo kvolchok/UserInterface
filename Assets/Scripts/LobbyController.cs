@@ -4,7 +4,7 @@ using UnityEngine;
 public class LobbyController : MonoBehaviour
 {
     [SerializeField]
-    private GameSettings _gameSettings;
+    private HeroesManager _heroesManager;
     [SerializeField]
     private LobbyScreen _lobbyScreen;
     [SerializeField]
@@ -14,20 +14,18 @@ public class LobbyController : MonoBehaviour
     
     [SerializeField]
     private HeroLoader _heroLoader;
-
-    private PrefsManager _prefsManager;
+    
     private int _currentHeroIndex;
 
     private void Awake()
     {
-        _prefsManager = new PrefsManager();
-        _prefsManager.UpdateBoughtHeroes(_gameSettings.Heroes);
-        _currentHeroIndex = _prefsManager.GetSelectedHeroIndex();
+        _heroesManager.UpdateBoughtHeroes();
+        _currentHeroIndex = PrefsManager.GetSelectedHeroIndex();
 
-        _currencyManager.Initialize(_prefsManager);
+        _currencyManager.SetStartCurrency();
         _lobbyScreen.Initialize(_heroLoader);
-        _selectHeroScreen.Initialize(_prefsManager, _currencyManager, _heroLoader,
-            _gameSettings.Heroes, _currentHeroIndex, OnHeroSelected);
+        _selectHeroScreen.Initialize(_heroLoader, _currencyManager, _heroesManager, _currentHeroIndex,
+            OnHeroSelected);
         
         ShowLobbyScreen();
     }
@@ -35,7 +33,7 @@ public class LobbyController : MonoBehaviour
     [UsedImplicitly]
     public void ShowLobbyScreen()
     {
-        _lobbyScreen.ShowScreen(_gameSettings.Heroes, _currentHeroIndex);
+        _lobbyScreen.ShowScreen(_heroesManager.Heroes, _currentHeroIndex);
     }
 
     [UsedImplicitly]

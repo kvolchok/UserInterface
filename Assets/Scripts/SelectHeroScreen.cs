@@ -7,6 +7,7 @@ public class SelectHeroScreen : MonoBehaviour
 {
     private Action<int> _onHeroSelected;
     
+    private HeroSettings[] _heroes => _heroesManager.Heroes;
     private HeroSettings _currentHero => _heroes[_currentHeroIndex];
     
     [SerializeField]
@@ -16,20 +17,18 @@ public class SelectHeroScreen : MonoBehaviour
     private Button _selectButton;
     [SerializeField]
     private Button _buyButton;
-
-    private PrefsManager _prefsManager;
-    private CurrencyManager _currencyManager;
+    
     private HeroLoader _heroLoader;
-    private HeroSettings[] _heroes;
+    private CurrencyManager _currencyManager;
+    private HeroesManager _heroesManager;
     private int _currentHeroIndex;
 
-    public void Initialize(PrefsManager prefsManager, CurrencyManager currencyManager, HeroLoader heroLoader,
-        HeroSettings[] heroes, int currentHeroIndex, Action<int> onHeroSelected)
+    public void Initialize(HeroLoader heroLoader, CurrencyManager currencyManager,
+        HeroesManager heroesManager, int currentHeroIndex, Action<int> onHeroSelected)
     {
-        _prefsManager = prefsManager;
-        _currencyManager = currencyManager;
         _heroLoader = heroLoader;
-        _heroes = heroes;
+        _currencyManager = currencyManager;
+        _heroesManager = heroesManager;
         _currentHeroIndex = currentHeroIndex;
         _onHeroSelected = onHeroSelected;
     }
@@ -45,8 +44,8 @@ public class SelectHeroScreen : MonoBehaviour
         if (_currencyManager.BuyHero(_currentHero.Price))
         {
             _currentHero.ChangeAvailability(true);
-            UpdateButtonsState(isSelected: true);
-            _prefsManager.SaveBoughtHero(_currentHeroIndex);
+            UpdateButtonsState(true);
+            _heroesManager.SaveBoughtHeroes();
         }
     }
 
@@ -54,7 +53,7 @@ public class SelectHeroScreen : MonoBehaviour
     public void SelectHero()
     {
         _onHeroSelected?.Invoke(_currentHeroIndex);
-        _prefsManager.SaveSelectedHeroIndex(_currentHeroIndex);
+        PrefsManager.SaveSelectedHeroIndex(_currentHeroIndex);
     }
     
     [UsedImplicitly]

@@ -4595,7 +4595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9302ec9fe724047afc50ca1a0f3b50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameSettings: {fileID: 1264100053}
+  _heroesManager: {fileID: 1264100053}
   _lobbyScreen: {fileID: 993924295}
   _selectHeroScreen: {fileID: 611153895}
   _currencyManager: {fileID: 2135378398}
