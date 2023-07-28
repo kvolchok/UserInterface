@@ -3491,8 +3491,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 993924295}
-        m_TargetAssemblyTypeName: LobbyScreen, Assembly-CSharp
+      - m_Target: {fileID: 1264100055}
+        m_TargetAssemblyTypeName: LobbyController, Assembly-CSharp
         m_MethodName: LoadBattleScene
         m_Mode: 1
         m_Arguments:

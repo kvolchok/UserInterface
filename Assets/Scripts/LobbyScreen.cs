@@ -1,11 +1,7 @@
-using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LobbyScreen : MonoBehaviour
 {
-    private const string BATTLE_SCENE = "BattleScene";
-    
     [SerializeField]
     private HeroStatsView _heroStatsView;
     
@@ -22,12 +18,5 @@ public class LobbyScreen : MonoBehaviour
         _currentHero = heroes[heroIndex];
         _heroStatsView.ShowHeroStats(_currentHero);
         _heroLoader.ShowHero(_currentHero);
-    }
-
-    [UsedImplicitly]
-    public void LoadBattleScene()
-    {
-        DontDestroyOnLoad(_heroLoader);
-        SceneManager.LoadSceneAsync(BATTLE_SCENE);
     }
 }
