@@ -66,4 +66,14 @@ public class HeroesManager : MonoBehaviour
         var boughtHeroes = string.Concat(_boughtHeroesArray);
         PrefsManager.SaveBoughtHeroes(boughtHeroes);
     }
+
+    public void SaveSelectedHeroIndex(int heroIndex)
+    {
+        for (var i = 0; i < _heroes.Length; i++)
+        {
+            _heroes[i].ChangeLastSelectedState(i == heroIndex);
+        }
+        
+        PrefsManager.SaveSelectedHeroIndex(heroIndex);
+    }
 }

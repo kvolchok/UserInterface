@@ -25,9 +25,16 @@ public class HeroSettings : ScriptableObject
     public GameObject Prefab { get; private set; }
     [field:SerializeField]
     public bool IsAvailable { get; private set; }
+    
+    public bool IsLastSelected { get; private set; }
 
     public void ChangeAvailability(bool isAvailable)
     {
         IsAvailable = isAvailable;
+    }
+    
+    public void ChangeLastSelectedState(bool isLastSelected)
+    {
+        IsLastSelected = isLastSelected;
     }
 }

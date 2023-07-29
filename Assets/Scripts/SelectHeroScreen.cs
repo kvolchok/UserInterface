@@ -51,7 +51,7 @@ public class SelectHeroScreen : MonoBehaviour
     public void SelectHero()
     {
         _onHeroSelected?.Invoke(_currentHeroIndex);
-        PrefsManager.SaveSelectedHeroIndex(_currentHeroIndex);
+        _heroesManager.SaveSelectedHeroIndex(_currentHeroIndex);
     }
     
     [UsedImplicitly]

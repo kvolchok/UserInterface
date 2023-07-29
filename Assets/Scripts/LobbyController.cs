@@ -46,7 +46,6 @@ public class LobbyController : MonoBehaviour
     [UsedImplicitly]
     public void LoadBattleScene()
     {
-        DontDestroyOnLoad(_heroLoader);
         SceneManager.LoadSceneAsync(GlobalConstants.BATTLE_SCENE);
     }
 
