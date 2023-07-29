@@ -6,12 +6,15 @@ public class HeroesManager : MonoBehaviour
 {
     [SerializeField]
     private HeroSettings[] _heroes;
+    [SerializeField]
+    private int _defaultHeroIndex;
 
     private char[] _boughtHeroesArray;
 
     private void Awake()
     {
-        _boughtHeroesArray = new char[_heroes.Length];
+        DisableHeroesExceptDefault(_defaultHeroIndex);
+        InitializeBoughtHeroesArray();
     }
 
     public HeroSettings GetCurrentHero(int currentHeroIndex)
@@ -31,11 +34,6 @@ public class HeroesManager : MonoBehaviour
 
     public void UpdateBoughtHeroes()
     {
-        for (var i = 1; i < _heroes.Length; i++)
-        {
-            _heroes[i].ChangeAvailability(false);
-        }
-
         var boughtHeroes = PrefsManager.GetBoughtHeroes();
 
         if (string.IsNullOrEmpty(boughtHeroes))
@@ -43,24 +41,19 @@ public class HeroesManager : MonoBehaviour
             return;
         }
         
+        _boughtHeroesArray = boughtHeroes.ToCharArray();
+        
         for (var i = 0; i < _heroes.Length; i++)
         {
             _heroes[i].ChangeAvailability(boughtHeroes[i] == '1');
         }
     }
 
-    public void SaveBoughtHeroes()
+    public void SaveBoughtHeroIndex(int heroIndex)
     {
-        for (var i = 0; i < _heroes.Length; i++)
+        if (heroIndex >= 0 && heroIndex < _boughtHeroesArray.Length)
         {
-            if (_heroes[i].IsAvailable)
-            {
-                _boughtHeroesArray[i] = '1';
-            }
-            else
-            {
-                _boughtHeroesArray[i] = '0';
-            }
+            _boughtHeroesArray[heroIndex] = '1';
         }
 
         var boughtHeroes = string.Concat(_boughtHeroesArray);
@@ -75,5 +68,30 @@ public class HeroesManager : MonoBehaviour
         }
         
         PrefsManager.SaveSelectedHeroIndex(heroIndex);
+    }
+    
+    private void DisableHeroesExceptDefault(int defaultHeroIndex)
+    {
+        for (var i = 0; i < _heroes.Length; i++)
+        {
+            _heroes[i].ChangeAvailability(i == defaultHeroIndex);
+        }
+    }
+
+    private void InitializeBoughtHeroesArray()
+    {
+        _boughtHeroesArray = new char[_heroes.Length];
+        
+        for (var i = 0; i < _heroes.Length; i++)
+        {
+            if (_heroes[i].IsAvailable)
+            {
+                _boughtHeroesArray[i] = '1';
+            }
+            else
+            {
+                _boughtHeroesArray[i] = '0';
+            }
+        }
     }
 }

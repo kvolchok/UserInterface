@@ -43,7 +43,7 @@ public class SelectHeroScreen : MonoBehaviour
         {
             currentHero.ChangeAvailability(true);
             UpdateButtonsState(true);
-            _heroesManager.SaveBoughtHeroes();
+            _heroesManager.SaveBoughtHeroIndex(_currentHeroIndex);
         }
     }
 
