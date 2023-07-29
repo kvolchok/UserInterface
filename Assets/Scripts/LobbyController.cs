@@ -24,9 +24,8 @@ public class LobbyController : MonoBehaviour
         _currentHeroIndex = PrefsManager.GetSelectedHeroIndex();
 
         _currencyManager.SetStartCurrency();
-        _lobbyScreen.Initialize(_heroLoader);
-        _selectHeroScreen.Initialize(_heroLoader, _currencyManager, _heroesManager, _currentHeroIndex,
-            OnHeroSelected);
+        _lobbyScreen.Initialize(_heroLoader, _heroesManager);
+        _selectHeroScreen.Initialize(_heroLoader, _heroesManager, _currencyManager, OnHeroSelected);
         
         ShowLobbyScreen();
     }
@@ -34,13 +33,13 @@ public class LobbyController : MonoBehaviour
     [UsedImplicitly]
     public void ShowLobbyScreen()
     {
-        _lobbyScreen.ShowScreen(_heroesManager.Heroes, _currentHeroIndex);
+        _lobbyScreen.ShowScreen(_currentHeroIndex);
     }
 
     [UsedImplicitly]
     public void ShowSelectHeroScreen()
     {
-        _selectHeroScreen.ShowScreen();
+        _selectHeroScreen.ShowScreen(_currentHeroIndex);
     }
     
     

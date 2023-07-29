@@ -4,21 +4,36 @@ using UnityEngine;
 [Serializable]
 public class HeroesManager : MonoBehaviour
 {
-    [field:SerializeField]
-    public HeroSettings[] Heroes { get; private set; }
-    
+    [SerializeField]
+    private HeroSettings[] _heroes;
+
     private char[] _boughtHeroesArray;
 
     private void Awake()
     {
-        _boughtHeroesArray = new char[Heroes.Length];
+        _boughtHeroesArray = new char[_heroes.Length];
+    }
+
+    public HeroSettings GetCurrentHero(int currentHeroIndex)
+    {
+        return _heroes[currentHeroIndex];
+    }
+    
+    public int GetPreviousHeroIndex(int currentHeroIndex)
+    {
+        return (currentHeroIndex - 1 + _heroes.Length) % _heroes.Length;
+    }
+    
+    public int GetNextHeroIndex(int currentHeroIndex)
+    {
+        return (currentHeroIndex + 1) % _heroes.Length;
     }
 
     public void UpdateBoughtHeroes()
     {
-        for (var i = 1; i < Heroes.Length; i++)
+        for (var i = 1; i < _heroes.Length; i++)
         {
-            Heroes[i].ChangeAvailability(false);
+            _heroes[i].ChangeAvailability(false);
         }
 
         var boughtHeroes = PrefsManager.GetBoughtHeroes();
@@ -28,17 +43,17 @@ public class HeroesManager : MonoBehaviour
             return;
         }
         
-        for (var i = 0; i < Heroes.Length; i++)
+        for (var i = 0; i < _heroes.Length; i++)
         {
-            Heroes[i].ChangeAvailability(boughtHeroes[i] == '1');
+            _heroes[i].ChangeAvailability(boughtHeroes[i] == '1');
         }
     }
 
     public void SaveBoughtHeroes()
     {
-        for (var i = 0; i < Heroes.Length; i++)
+        for (var i = 0; i < _heroes.Length; i++)
         {
-            if (Heroes[i].IsAvailable)
+            if (_heroes[i].IsAvailable)
             {
                 _boughtHeroesArray[i] = '1';
             }

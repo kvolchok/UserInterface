@@ -7,9 +7,6 @@ public class SelectHeroScreen : MonoBehaviour
 {
     private Action<int> _onHeroSelected;
     
-    private HeroSettings[] _heroes => _heroesManager.Heroes;
-    private HeroSettings _currentHero => _heroes[_currentHeroIndex];
-    
     [SerializeField]
     private HeroStatsView _heroStatsView;
 
@@ -19,31 +16,32 @@ public class SelectHeroScreen : MonoBehaviour
     private Button _buyButton;
     
     private HeroLoader _heroLoader;
-    private CurrencyManager _currencyManager;
     private HeroesManager _heroesManager;
+    private CurrencyManager _currencyManager;
+    
     private int _currentHeroIndex;
 
-    public void Initialize(HeroLoader heroLoader, CurrencyManager currencyManager,
-        HeroesManager heroesManager, int currentHeroIndex, Action<int> onHeroSelected)
+    public void Initialize(HeroLoader heroLoader, HeroesManager heroesManager, CurrencyManager currencyManager,
+        Action<int> onHeroSelected)
     {
         _heroLoader = heroLoader;
-        _currencyManager = currencyManager;
         _heroesManager = heroesManager;
-        _currentHeroIndex = currentHeroIndex;
+        _currencyManager = currencyManager;
         _onHeroSelected = onHeroSelected;
     }
     
-    public void ShowScreen()
+    public void ShowScreen(int currentHeroIndex)
     {
-        ShowHero(_currentHeroIndex);
+        ShowHero(currentHeroIndex);
     }
 
     [UsedImplicitly]
     public void BuyHero()
     {
-        if (_currencyManager.BuyHero(_currentHero.Price))
+        var currentHero = _heroesManager.GetCurrentHero(_currentHeroIndex);
+        if (_currencyManager.BuyHero(currentHero.Price))
         {
-            _currentHero.ChangeAvailability(true);
+            currentHero.ChangeAvailability(true);
             UpdateButtonsState(true);
             _heroesManager.SaveBoughtHeroes();
         }
@@ -57,25 +55,26 @@ public class SelectHeroScreen : MonoBehaviour
     }
     
     [UsedImplicitly]
-    public void SelectNextHero()
+    public void SelectPreviousHero()
     {
-        _currentHeroIndex = (_currentHeroIndex + 1) % _heroes.Length;
-        ShowHero(_currentHeroIndex);
+        var newHeroIndex = _heroesManager.GetPreviousHeroIndex(_currentHeroIndex);
+        ShowHero(newHeroIndex);
     }
     
     [UsedImplicitly]
-    public void SelectPreviousHero()
+    public void SelectNextHero()
     {
-        _currentHeroIndex = (_currentHeroIndex - 1 + _heroes.Length) % _heroes.Length;
-        ShowHero(_currentHeroIndex);
+        var newHeroIndex = _heroesManager.GetNextHeroIndex(_currentHeroIndex);
+        ShowHero(newHeroIndex);
     }
 
-    private void ShowHero(int currentHeroIndex)
+    private void ShowHero(int newHeroIndex)
     {
-        _currentHeroIndex = currentHeroIndex;
-        _heroLoader.ShowHero(_currentHero);
-        _heroStatsView.ShowHeroStats(_currentHero);
-        UpdateButtonsState(_currentHero.IsAvailable);
+        _currentHeroIndex = newHeroIndex;
+        var currentHero = _heroesManager.GetCurrentHero(_currentHeroIndex);
+        _heroLoader.ShowHero(currentHero);
+        _heroStatsView.ShowHeroStats(currentHero);
+        UpdateButtonsState(currentHero.IsAvailable);
     }
     
     private void UpdateButtonsState(bool isSelected)

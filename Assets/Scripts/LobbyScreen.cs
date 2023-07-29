@@ -6,17 +6,18 @@ public class LobbyScreen : MonoBehaviour
     private HeroStatsView _heroStatsView;
     
     private HeroLoader _heroLoader;
-    private HeroSettings _currentHero;
+    private HeroesManager _heroesManager;
 
-    public void Initialize(HeroLoader heroLoader)
+    public void Initialize(HeroLoader heroLoader, HeroesManager heroesManager)
     {
         _heroLoader = heroLoader;
+        _heroesManager = heroesManager;
     }
     
-    public void ShowScreen(HeroSettings[] heroes, int heroIndex)
+    public void ShowScreen(int currentHeroIndex)
     {
-        _currentHero = heroes[heroIndex];
-        _heroStatsView.ShowHeroStats(_currentHero);
-        _heroLoader.ShowHero(_currentHero);
+        var currentHero = _heroesManager.GetCurrentHero(currentHeroIndex);
+        _heroStatsView.ShowHeroStats(currentHero);
+        _heroLoader.ShowHero(currentHero);
     }
 }

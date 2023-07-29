@@ -4561,7 +4561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d3e4edd88f44ad79501b1206b6c660c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Heroes>k__BackingField:
+  _heroes:
   - {fileID: 11400000, guid: 2218b4c858db34d34936e1169ec79561, type: 2}
   - {fileID: 11400000, guid: 246278b289e914ab2ae1411e434523d7, type: 2}
   - {fileID: 11400000, guid: 50e5581b10f834234ae798435050ea9e, type: 2}
